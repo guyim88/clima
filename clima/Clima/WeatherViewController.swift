@@ -13,11 +13,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "e72ca729af228beabd5d20e3b7749713"
+    let APP_ID = "e72ca729af228beabd5d20e3b7749713" //obtained from free account
     
 
     //Declare instance variables
-    let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager() //apple's core location module
     let weatherDataModel = WeatherDataModel()
 
     
@@ -30,7 +30,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Set up the location manager
+        //Set up the location manager - setting self as delegate for handling location
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.requestWhenInUseAuthorization()
@@ -142,7 +142,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     //userEnteredANewCityName Delegate method:
     func userEnteredANewCityName(city: String) {
-        let params : [String : String] = ["q" : city, "appid" : APP_ID]
+        let params : [String : String] = ["q" : city, "appid" : APP_ID] //format obtained from openweathermap api
         
         getWeatherData(url: WEATHER_URL, parameters: params)
     }
